@@ -1,4 +1,7 @@
-const Body = () => {
+import ListBox from "./ListBox";
+import WatchedBox from "./WatchedBox";
+
+const Main = ({ movies }) => {
   return (
     <div className="d-flex justify-content-center align-items-center p-4 rounded ">
       <div
@@ -25,8 +28,10 @@ const Body = () => {
         </div>
         <div></div>
       </div>
+      <ListBox movies={movies} />
+      <WatchedBox />
     </div>
   );
 };
 
-export default Body;
+export default Main;
