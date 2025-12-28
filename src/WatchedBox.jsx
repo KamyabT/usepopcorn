@@ -1,7 +1,7 @@
 const WatchedBox = () => {
   return (
     <>
-      <h1>WatchedBox</h1>
+      <div className="d-flex flex-column justify-content-center align-items-center p-4 rounded bg-black text-white"></div>
     </>
   );
 };

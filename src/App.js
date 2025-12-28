@@ -7,7 +7,7 @@ const movies = [
     imdbID: "tt0088763",
     Title: "Back to the Future",
     Year: "1985",
-    poster: "google.com",
+    poster: "",
     runtime: 116,
     imdbRating: 8.5,
     userRating: 9,
@@ -33,6 +33,9 @@ const movies = [
 ];
 
 function App() {
+  fetch(`http://www.omdbapi.com/?apikey=67c79cad&s=inception`)
+    .then((res) => res.json())
+    .then((data) => console.log(data.Search));
   return (
     <>
       <Navbar />
