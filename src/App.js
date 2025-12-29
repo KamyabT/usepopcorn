@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import { useEffect, useState } from "react";
 
 const movies = [
   {
@@ -33,9 +34,14 @@ const movies = [
 ];
 
 function App() {
-  fetch(`http://www.omdbapi.com/?apikey=67c79cad&s=inception`)
-    .then((res) => res.json())
-    .then((data) => console.log(data.Search));
+  const [movies, setMovies] = useState([]);
+
+  useEffect(function () {
+    fetch(`http://www.omdbapi.com/?apikey=67c79cad&s=inception`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
+
   return (
     <>
       <Navbar />
