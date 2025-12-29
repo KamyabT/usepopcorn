@@ -5,8 +5,8 @@ const Movie = ({ movie, setSelectedId }) => {
 
   return (
     <li
-      className="d-flex mb-2 pb-2"
-      style={{ listStyle: "none", borderBottom: "1px solid gray" }}
+      className="d-flex py-2 movie-item"
+      style={{ listStyle: "none", borderBottom: "1px solid gray", cursor: "pointer" }}
       onClick={() => selectedMovie(movie)}
     >
       <img

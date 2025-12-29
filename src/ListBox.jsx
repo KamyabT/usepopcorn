@@ -7,8 +7,12 @@ const ListBox = ({ movies, isLoading, error, query, setSelectedId }) => {
   const [showMoies, setShowMovies] = useState(true);
   return (
     <div
-      className="d-flex flex-column align-items-center p-4 rounded bg-black text-white"
-      style={{ width: "400px", minHeight: "calc(100vh - 170px)" }}
+      className="d-flex flex-column align-items-center p-4 rounded text-white"
+      style={{
+        width: "480px",
+        minHeight: "calc(100vh - 170px)",
+        backgroundColor: "#1C1C1E",
+      }}
     >
       <div
         onClick={() => setShowMovies(!showMoies)}
@@ -21,7 +25,9 @@ const ListBox = ({ movies, isLoading, error, query, setSelectedId }) => {
         <p className="text-white">Type at least 3 characters to search</p>
       )}
       {isLoading && <Loader />}
-      {!isLoading && !error && showMoies && <MovieList movies={movies} setSelectedId={setSelectedId} />}
+      {!isLoading && !error && showMoies && (
+        <MovieList movies={movies} setSelectedId={setSelectedId} />
+      )}
       {error && <ErrorMessage error={error} />}
     </div>
   );
