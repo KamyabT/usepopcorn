@@ -33,9 +33,9 @@ const SelectedMovie = ({ selectedId }) => {
       </div>
       <div className="d-flex flex-column p-4">
         <p>imdbRating</p>
-        <p className="font-italic">{movieData?.Plot}</p>
-        <p>{movieData?.Actors}</p>
-        <p>{movieData?.Director}</p>
+        <p className="fst-italic">{movieData?.Plot}</p>
+        <p>Starring {movieData?.Actors}</p>
+        <p>Directed {movieData?.Director}</p>
       </div>
     </div>
   );
