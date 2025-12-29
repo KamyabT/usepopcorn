@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const SelectedMovie = ({ selectedId }) => {
+const SelectedMovie = ({ selectedId, setSelectedId }) => {
   const [movieData, setMovieData] = useState(null);
 
   useEffect(
@@ -17,8 +17,24 @@ const SelectedMovie = ({ selectedId }) => {
     [selectedId]
   );
 
+  function handleShowSelectedMovie() {
+    setSelectedId(null);
+  }
+
   return (
-    <div>
+    <div className="">
+      <span
+        className="p-2 text-black position-absolute"
+        style={{
+          backgroundColor: "white",
+          borderRadius: "50%",
+          cursor: "pointer",
+          fontSize: "24px",
+        }}
+        onClick={handleShowSelectedMovie}
+      >
+        &#8592;
+      </span>
       <div className="d-flex">
         <img src={movieData?.Poster} alt={movieData?.Title} style={{ width: "150px" }} />
         <div className="d-flex flex-column justify-content-center ps-4">

@@ -1,5 +1,5 @@
 import SelectedMovie from "./SelectedMovie.jsx";
-const WatchedBox = ({ selectedId }) => {
+const WatchedBox = ({ selectedId, setSelectedId }) => {
   return (
     <div
       className="d-flex flex-column align-self-baseline rounded text-white ms-2"
@@ -11,7 +11,12 @@ const WatchedBox = ({ selectedId }) => {
       }}
     >
       <div className="d-flex align-self-end mb-2" style={{ cursor: "pointer" }}></div>
-      {selectedId && <SelectedMovie selectedId={selectedId}></SelectedMovie>}
+      {selectedId && (
+        <SelectedMovie
+          selectedId={selectedId}
+          setSelectedId={setSelectedId}
+        ></SelectedMovie>
+      )}
     </div>
   );
 };
