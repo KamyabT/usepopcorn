@@ -39,32 +39,37 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
 
-  const query = "inception";
+  // const query = "inception";
 
-  useEffect(function () {
-    async function fetchMovies() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${query}`);
-        const data = await res.json();
-        setMovies(data.Search);
-        setIsLoading(false);
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          setError("");
+          setIsLoading(true);
+          const res = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${query}`);
+          const data = await res.json();
+          setMovies(data.Search);
+          setIsLoading(false);
 
-        if(!res.ok) throw new Error("Something went wrong");
-
-      } catch (err) {
-        console.error("Error fetching movies:", err);
-        setError(err.message);
-        setIsLoading(false);
+          if (!res.ok) throw new Error("Something went wrong");
+        } catch (err) {
+          console.error("Error fetching movies:", err);
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-    fetchMovies();
-  }, []);
+      fetchMovies();
+    },
+    [query]
+  );
 
   return (
     <>
-      <Navbar movies={movies}/>
+      <Navbar movies={movies} query={query} setQuery={setQuery} />
       <Main movies={movies} isLoading={isLoading} error={error} />
     </>
   );

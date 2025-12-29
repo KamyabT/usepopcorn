@@ -17,7 +17,8 @@ const ListBox = ({ movies , isLoading , error}) => {
       >
         {showMoies ? "X" : "-"}
       </div>
-      {isLoading ? <Loader /> : !error && showMoies && <MovieList movies={movies} />}
+      {isLoading && <Loader />}
+      {!isLoading && !error && showMoies && <MovieList movies={movies} />}
       {error && <ErrorMessage error={error} />}
     </div>
   );
