@@ -1,9 +1,13 @@
-const Movie = ({ movie }) => {
-  console.log(movie);
+const Movie = ({ movie, setSelectedId }) => {
+  function selectedMovie(movie) {
+    setSelectedId(movie.imdbID);
+  }
+
   return (
     <li
       className="d-flex mb-2 pb-2"
       style={{ listStyle: "none", borderBottom: "1px solid gray" }}
+      onClick={() => selectedMovie(movie)}
     >
       <img
         className="me-4"

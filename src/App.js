@@ -40,6 +40,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
+  const [selectedId, setSelectedId] = useState("");
 
   useEffect(
     function () {
@@ -74,7 +75,14 @@ function App() {
   return (
     <>
       <Navbar movies={movies} query={query} setQuery={setQuery} />
-      <Main movies={movies} isLoading={isLoading} error={error} query={query} />
+      <Main
+        setSelectedId={setSelectedId}
+        movies={movies}
+        isLoading={isLoading}
+        error={error}
+        query={query}
+        selectedId={selectedId}
+      />
     </>
   );
 }

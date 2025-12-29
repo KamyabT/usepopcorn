@@ -3,7 +3,7 @@ import { useState } from "react";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 
-const ListBox = ({ movies, isLoading, error, query }) => {
+const ListBox = ({ movies, isLoading, error, query, setSelectedId }) => {
   const [showMoies, setShowMovies] = useState(true);
   return (
     <div
@@ -21,7 +21,7 @@ const ListBox = ({ movies, isLoading, error, query }) => {
         <p className="text-white">Type at least 3 characters to search</p>
       )}
       {isLoading && <Loader />}
-      {!isLoading && !error && showMoies && <MovieList movies={movies} />}
+      {!isLoading && !error && showMoies && <MovieList movies={movies} setSelectedId={setSelectedId} />}
       {error && <ErrorMessage error={error} />}
     </div>
   );
