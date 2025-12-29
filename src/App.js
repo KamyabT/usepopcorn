@@ -41,8 +41,6 @@ function App() {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
 
-  // const query = "inception";
-
   useEffect(
     function () {
       async function fetchMovies() {
@@ -62,6 +60,12 @@ function App() {
           setIsLoading(false);
         }
       }
+
+      if (query.length < 3 || query === "") {
+        setMovies([]);
+        setError(null);
+        return;
+      }
       fetchMovies();
     },
     [query]
@@ -70,7 +74,7 @@ function App() {
   return (
     <>
       <Navbar movies={movies} query={query} setQuery={setQuery} />
-      <Main movies={movies} isLoading={isLoading} error={error} />
+      <Main movies={movies} isLoading={isLoading} error={error} query={query} />
     </>
   );
 }
