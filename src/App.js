@@ -53,7 +53,6 @@ function App() {
           });
           const data = await res.json();
           setMovies(data.Search);
-          setIsLoading(false);
 
           if (!res.ok) throw new Error("Something went wrong");
           setError("");
