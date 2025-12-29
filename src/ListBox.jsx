@@ -1,7 +1,9 @@
 import MovieList from "./MovieList";
 import { useState } from "react";
+import Loader from "./Loader";
+import ErrorMessage from "./ErrorMessage";
 
-const ListBox = ({ movies }) => {
+const ListBox = ({ movies , isLoading , error}) => {
   const [showMoies, setShowMovies] = useState(true);
   return (
     <div
@@ -15,7 +17,8 @@ const ListBox = ({ movies }) => {
       >
         {showMoies ? "X" : "-"}
       </div>
-      {showMoies && <MovieList movies={movies} />}
+      {isLoading ? <Loader /> : !error && showMoies && <MovieList movies={movies} />}
+      {error && <ErrorMessage error={error} />}
     </div>
   );
 };

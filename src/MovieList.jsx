@@ -4,7 +4,7 @@ const MovieList = ({ movies }) => {
   return (
     <div className="">
       {movies.map((movie) => (
-        <Movie movie={movie}></Movie>
+        <Movie key={movie.imdbID} movie={movie}></Movie>
       ))}
     </div>
   );

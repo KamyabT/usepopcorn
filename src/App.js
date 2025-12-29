@@ -33,19 +33,39 @@ const movies = [
   },
 ];
 
+const key = "67c79cad";
+
 function App() {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const query = "inception";
 
   useEffect(function () {
-    fetch(`http://www.omdbapi.com/?apikey=67c79cad&s=inception`)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
+    async function fetchMovies() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${query}`);
+        const data = await res.json();
+        setMovies(data.Search);
+        setIsLoading(false);
+
+        if(!res.ok) throw new Error("Something went wrong");
+
+      } catch (err) {
+        console.error("Error fetching movies:", err);
+        setError(err.message);
+        setIsLoading(false);
+      }
+    }
+    fetchMovies();
   }, []);
 
   return (
     <>
-      <Navbar />
-      <Main movies={movies} />
+      <Navbar movies={movies}/>
+      <Main movies={movies} isLoading={isLoading} error={error} />
     </>
   );
 }

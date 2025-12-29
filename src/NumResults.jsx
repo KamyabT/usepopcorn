@@ -1,7 +1,8 @@
-const NumResults = () => {
+const NumResults = ({ movies }) => {
+  const numResults = movies.length;
   return (
     <p className="text-white">
-      Found <span className="fw-bold">12</span> results
+      Found <span className="fw-bold">{numResults}</span> results
     </p>
   );
 };
